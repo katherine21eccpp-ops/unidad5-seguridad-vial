@@ -1,0 +1,726 @@
+<style>
+.u5-wrap{font-family:Arial,sans-serif;background:#FFF8F0;color:#1A0A00;line-height:1.7;font-size:15px;max-width:980px;margin:0 auto;}
+.u5-hero{background:linear-gradient(135deg,#C45000 0%,#8B2500 60%,#3D0A00 100%);color:#fff;padding:40px 28px 32px;border-radius:12px;margin-bottom:8px;}
+.u5-hero h1{font-size:26px;font-weight:900;margin:0 0 10px;color:#fff;}
+.u5-hero h1 span{color:#FFD580;}
+.u5-hero p{font-size:13px;color:rgba(255,255,255,.82);margin:0 0 18px;}
+.u5-badge{display:inline-block;background:rgba(255,213,128,.2);border:1px solid rgba(255,213,128,.45);color:#FFD580;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:30px;margin-bottom:14px;}
+.u5-meta{display:flex;flex-wrap:wrap;gap:16px;}
+.u5-meta span{font-size:12px;color:rgba(255,255,255,.82);}
+.u5-progress-wrap{background:#8B2500;padding:8px 28px 16px;border-radius:0 0 8px 8px;margin-bottom:24px;}
+.u5-progress-label{font-size:10px;color:rgba(255,255,255,.6);font-weight:700;letter-spacing:.08em;margin-bottom:5px;}
+.u5-progress-bar{background:rgba(255,255,255,.2);border-radius:6px;height:7px;overflow:hidden;}
+.u5-progress-fill{height:100%;background:#FFD580;border-radius:6px;transition:width 1s ease;}
+.u5-tabs{display:flex;flex-wrap:wrap;gap:4px;background:#fff;border:1px solid #FFD0A0;border-radius:10px;padding:8px;margin-bottom:20px;box-shadow:0 2px 8px rgba(196,80,0,.08);}
+.u5-tab{padding:9px 14px;font-size:12px;font-weight:700;color:#7A4000;cursor:pointer;border-radius:7px;border:none;background:none;transition:all .2s;white-space:nowrap;}
+.u5-tab:hover{background:#FFF0E0;color:#C45000;}
+.u5-tab.active{background:#C45000;color:#fff;}
+.u5-section{display:none;}
+.u5-section.active{display:block;}
+.u5-sec-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;}
+.u5-sec-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.u5-sec-header h2{font-size:20px;font-weight:900;color:#C45000;margin:0 0 4px;}
+.u5-sec-header p{font-size:12px;color:#7A4000;margin:0;}
+.u5-card{background:#fff;border:1px solid #FFD0A0;border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(196,80,0,.07);}
+.u5-card-title{font-size:14px;font-weight:700;color:#C45000;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.u5-card p,.u5-card ul{font-size:13.5px;color:#3A1A00;line-height:1.75;margin:0;}
+.u5-card ul{padding-left:18px;}
+.u5-card li{margin-bottom:6px;}
+.u5-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+.u5-grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+.u5-alert{border-radius:10px;padding:16px 18px;margin-bottom:16px;display:flex;gap:12px;align-items:flex-start;font-size:13px;}
+.u5-alert-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.u5-alert.blue{background:#EBF2FF;border:1px solid #B8D0F7;color:#1A3A6C;}
+.u5-alert.red{background:#FFEBEB;border:1px solid #F7B8B8;color:#7A1A1A;}
+.u5-alert.yellow{background:#FFFBEB;border:1px solid #F7E6B8;color:#6C4A1A;}
+.u5-alert.green{background:#EDFAF3;border:1px solid #B8F0D3;color:#1A5C3A;}
+.u5-alert.orange{background:#FFF3E0;border:1px solid #FFD0A0;color:#7A3A00;}
+.u5-alert strong{font-weight:700;display:block;margin-bottom:3px;}
+.u5-highlight{background:linear-gradient(135deg,#C45000,#8B2500);color:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;}
+.u5-highlight h3{font-size:15px;font-weight:700;color:#FFD580;margin:0 0 7px;}
+.u5-highlight p{font-size:13px;color:rgba(255,255,255,.87);margin:0;line-height:1.7;}
+.u5-table-wrap{overflow-x:auto;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:20px;}
+.u5-table-wrap table{width:100%;border-collapse:collapse;background:#fff;}
+.u5-table-wrap thead tr{background:#C45000;}
+.u5-table-wrap thead th{padding:11px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;}
+.u5-table-wrap tbody tr{border-bottom:1px solid #FFD0A0;}
+.u5-table-wrap tbody tr:hover{background:#FFF8F0;}
+.u5-table-wrap tbody td{padding:11px 14px;font-size:13px;color:#3A1A00;}
+.u5-pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700;}
+.u5-pill.red{background:#FFEBEB;color:#A00;}
+.u5-pill.orange{background:#FFF3E0;color:#944A00;}
+.u5-pill.yellow{background:#FFFBEB;color:#7A5A00;}
+.u5-pill.green{background:#EDFAF3;color:#1A5C3A;}
+.u5-pill.blue{background:#EBF2FF;color:#1A3A8C;}
+.u5-acc-item{background:#fff;border:1px solid #FFD0A0;border-radius:10px;margin-bottom:8px;overflow:hidden;}
+.u5-acc-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;font-size:13.5px;font-weight:700;color:#C45000;user-select:none;}
+.u5-acc-header:hover{background:#FFF8F0;}
+.u5-acc-arrow{font-size:16px;transition:transform .25s;flex-shrink:0;}
+.u5-acc-body{display:none;padding:0 18px 16px;font-size:13px;color:#3A1A00;line-height:1.75;}
+.u5-acc-body ul{padding-left:18px;}
+.u5-acc-body li{margin-bottom:6px;}
+.u5-acc-item.open .u5-acc-arrow{transform:rotate(180deg);}
+.u5-acc-item.open .u5-acc-body{display:block;}
+.u5-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px;}
+.u5-stat-card{background:#fff;border:1px solid #FFD0A0;border-radius:10px;padding:18px;text-align:center;box-shadow:0 2px 8px rgba(196,80,0,.07);}
+.u5-stat-num{font-size:38px;font-weight:900;color:#C45000;line-height:1;margin-bottom:4px;}
+.u5-stat-label{font-size:12px;color:#7A4000;line-height:1.4;}
+.u5-paso-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.u5-paso{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #FFD0A0;border-radius:10px;padding:14px 16px;}
+.u5-paso-num{width:36px;height:36px;border-radius:50%;background:#C45000;color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.u5-paso h4{font-size:13px;font-weight:700;color:#C45000;margin:0 0 4px;}
+.u5-paso p{font-size:13px;color:#3A1A00;margin:0;line-height:1.6;}
+.u5-escala-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:20px;}
+.u5-escala-card{border-radius:10px;padding:14px 16px;border:1px solid transparent;}
+.u5-divider{height:1px;background:#FFD0A0;margin:22px 0;}
+.u5-h3{font-size:14px;font-weight:700;color:#C45000;margin:20px 0 12px;}
+.u5-quiz-q{margin-bottom:24px;}
+.u5-quiz-q > p{font-size:14px;font-weight:700;color:#1A0A00;margin-bottom:10px;}
+.u5-opt{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid #FFD0A0;border-radius:9px;padding:11px 14px;margin-bottom:7px;cursor:pointer;font-size:13.5px;color:#3A1A00;transition:border-color .2s,background .2s;}
+.u5-opt:hover{border-color:#C45000;background:#FFF3E0;}
+.u5-opt.ok{border-color:#1A8C5B!important;background:#EDFAF3!important;color:#1A5C3A!important;pointer-events:none;}
+.u5-opt.no{border-color:#D40000!important;background:#FFEBEB!important;color:#7A1A1A!important;pointer-events:none;}
+.u5-opt-letter{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:#FFD0A0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#7A4000;}
+.u5-opt.ok .u5-opt-letter{background:#1A8C5B;color:#fff;}
+.u5-opt.no .u5-opt-letter{background:#D40000;color:#fff;}
+.u5-fb{margin-top:5px;font-size:12px;font-weight:700;display:none;}
+.u5-fb.show{display:block;}
+.u5-quiz-btn{background:#C45000;color:#fff;border:none;border-radius:9px;padding:12px 26px;font-size:13.5px;font-weight:700;cursor:pointer;margin-top:6px;}
+.u5-quiz-btn:hover{background:#8B2500;}
+.u5-score{background:linear-gradient(135deg,#C45000,#8B2500);color:#fff;border-radius:12px;padding:24px;text-align:center;display:none;margin-top:18px;}
+.u5-score-num{font-size:52px;font-weight:900;color:#FFD580;line-height:1;}
+.u5-score p{font-size:13px;color:rgba(255,255,255,.87);margin:8px 0 0;}
+.u5-footer-nav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:20px;border-top:1px solid #FFD0A0;}
+.u5-btn-nav{display:flex;align-items:center;gap:7px;background:#fff;border:2px solid #FFD0A0;border-radius:9px;padding:10px 18px;font-size:13px;font-weight:700;color:#C45000;cursor:pointer;}
+.u5-btn-nav:hover{background:#C45000;color:#fff;border-color:#C45000;}
+.u5-btn-nav.pri{background:#C45000;color:#fff;border-color:#C45000;}
+.u5-btn-nav.pri:hover{background:#8B2500;border-color:#8B2500;}
+</style>
+
+<div class="u5-wrap">
+
+<!-- HERO -->
+<div class="u5-hero">
+  <div class="u5-badge">🇪🇨 Curso de Instructores · Ecuador</div>
+  <h1>Unidad 5: <span>Seguridad Vial</span></h1>
+  <p>Todo lo que un instructor necesita saber para prevenir accidentes, proteger vidas y enseñar a conducir con responsabilidad en las vías del Ecuador.</p>
+  <div class="u5-meta">
+    <span>🎯 Nivel Avanzado</span>
+    <span>🛡️ 5 Temas</span>
+    <span>⏱️ ~60 minutos</span>
+    <span>✅ Evaluación incluida</span>
+  </div>
+</div>
+<div class="u5-progress-wrap">
+  <div class="u5-progress-label">PROGRESO DE LA UNIDAD</div>
+  <div class="u5-progress-bar"><div class="u5-progress-fill" id="u5pf" style="width:14%"></div></div>
+</div>
+
+<!-- TABS -->
+<div class="u5-tabs">
+  <button class="u5-tab active" onclick="u5show(0)">📊 1. Accidentes</button>
+  <button class="u5-tab" onclick="u5show(1)">🛡️ 2. Manejo Defensivo</button>
+  <button class="u5-tab" onclick="u5show(2)">🍺 3. Alcohol y Drogas</button>
+  <button class="u5-tab" onclick="u5show(3)">😴 4. Cansancio</button>
+  <button class="u5-tab" onclick="u5show(4)">🚸 5. Peatones y Ciclistas</button>
+  <button class="u5-tab" onclick="u5show(5)">📝 Evaluación</button>
+</div>
+
+<!-- ══════════ S1: ACCIDENTES ══════════ -->
+<div class="u5-section active" id="u5s0">
+  <div class="u5-sec-header">
+    <div class="u5-sec-icon" style="background:#FFF3E0;">📊</div>
+    <div>
+      <h2>¿Por qué ocurren los accidentes de tránsito?</h2>
+      <p>Entender las causas es el primer paso para prevenirlas</p>
+    </div>
+  </div>
+
+  <div class="u5-highlight">
+    <h3>💡 ¿Qué es un accidente de tránsito?</h3>
+    <p>Es un hecho que pasa en la vía y que provoca daños a personas o a sus vehículos. La gran mayoría de accidentes <strong>no son producto del azar</strong> — tienen causas claras que se pueden evitar. Como instructor, tu trabajo es formar conductores que conozcan esas causas y las eviten.</p>
+  </div>
+
+  <p class="u5-h3">📈 Lo que dicen los números en Ecuador</p>
+  <div class="u5-stat-grid">
+    <div class="u5-stat-card">
+      <div class="u5-stat-num">90%</div>
+      <div class="u5-stat-label">de los accidentes son causados por el propio conductor, no por fallas del vehículo ni de la vía</div>
+    </div>
+    <div class="u5-stat-card">
+      <div class="u5-stat-num">70%</div>
+      <div class="u5-stat-label">de los accidentes ocurre dentro de las ciudades, no en carreteras</div>
+    </div>
+    <div class="u5-stat-card">
+      <div class="u5-stat-num">30%</div>
+      <div class="u5-stat-label">de los accidentes mortales en Ecuador tiene relación con el consumo de alcohol</div>
+    </div>
+    <div class="u5-stat-card">
+      <div class="u5-stat-num">#1</div>
+      <div class="u5-stat-label">causa de accidentes: exceso de velocidad, seguido de imprudencia y no respetar señales</div>
+    </div>
+  </div>
+
+  <p class="u5-h3">⚠️ Las 3 causas principales de los accidentes</p>
+  <div class="u5-grid3">
+    <div class="u5-card" style="border-top:4px solid #C45000;">
+      <div class="u5-card-title">👤 El conductor</div>
+      <p>Es la causa más común. Manejar muy rápido, distraerse con el celular, estar cansado, consumir alcohol o no respetar las señales. <strong>El conductor tiene el poder de evitarlo.</strong></p>
+    </div>
+    <div class="u5-card" style="border-top:4px solid #8B2500;">
+      <div class="u5-card-title">🚗 El vehículo</div>
+      <p>Frenos malos, neumáticos desgastados, luces que no funcionan. Casi siempre se puede prevenir con un buen mantenimiento antes de salir a la vía.</p>
+    </div>
+    <div class="u5-card" style="border-top:4px solid #FFD580;">
+      <div class="u5-card-title">🛣️ La vía y el clima</div>
+      <p>Carreteras en mal estado, poca señalización, lluvia, neblina o animales sueltos. Se enfrenta manejando más despacio y con mayor atención.</p>
+    </div>
+  </div>
+
+  <p class="u5-h3">🚨 Tipos de accidentes más frecuentes en Ecuador</p>
+  <div class="u5-table-wrap"><table>
+    <thead><tr><th>Tipo de Accidente</th><th>¿Cómo ocurre?</th><th>Cómo evitarlo</th></tr></thead>
+    <tbody>
+      <tr><td>💥 Choque frontal</td><td>Un vehículo invade el carril contrario al adelantar en curva o al dormirse</td><td>No adelantar en curvas. No manejar con sueño</td></tr>
+      <tr><td>🚶 Atropello</td><td>Un vehículo golpea a un peatón o ciclista. Muy frecuente en la ciudad</td><td>Respetar las cebras. Reducir velocidad en zonas concurridas</td></tr>
+      <tr><td>🔄 Volcamiento</td><td>El vehículo da vuelta por exceso de velocidad en curva o carga mal distribuida</td><td>Manejar a velocidad adecuada. No sobrecargar el vehículo</td></tr>
+      <tr><td>🚗 Choque por alcance</td><td>Un vehículo golpea por detrás al de adelante por no mantener distancia</td><td>Mantener distancia de seguridad. No distraerse</td></tr>
+      <tr><td>🌿 Salida de vía</td><td>El vehículo se sale de la carretera por fatiga, distracción o velocidad</td><td>Descansar antes de manejar. Respetar los límites de velocidad</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="u5-acc-item">
+    <div class="u5-acc-header" onclick="u5acc(this)"><span>🕐 ¿En qué momentos ocurren más accidentes en Ecuador?</span><span class="u5-acc-arrow">▼</span></div>
+    <div class="u5-acc-body"><ul>
+      <li><strong>Viernes y sábados por la noche:</strong> Más consumo de alcohol y menos control policial.</li>
+      <li><strong>Horas pico (7 a 9 de la mañana y 5 a 7 de la tarde):</strong> Más vehículos en la vía y conductores apurados.</li>
+      <li><strong>Madrugada (2 a 5 am):</strong> Mucho cansancio y poca visibilidad.</li>
+      <li><strong>Feriados y puentes:</strong> Más viajes en carretera y conductores que no acostumbran viajar largas distancias.</li>
+      <li><strong>En lluvia:</strong> La vía se pone resbalosa, se ve menos y el vehículo tarda más en frenar.</li>
+    </ul></div>
+  </div>
+
+  <div class="u5-alert orange">
+    <span class="u5-alert-icon">🎯</span>
+    <div><strong>Lo que el instructor puede hacer</strong>
+    Cada alumno bien formado es una vida protegida en la vía. Enseñar a conducir con responsabilidad no es solo cumplir un requisito — es un aporte directo a la reducción de accidentes en el Ecuador.</div>
+  </div>
+
+  <div class="u5-footer-nav"><span></span><button class="u5-btn-nav pri" onclick="u5show(1)">Siguiente: Manejo Defensivo →</button></div>
+</div>
+
+<!-- ══════════ S2: MANEJO DEFENSIVO ══════════ -->
+<div class="u5-section" id="u5s1">
+  <div class="u5-sec-header">
+    <div class="u5-sec-icon" style="background:#FFF3E0;">🛡️</div>
+    <div>
+      <h2>Manejo Defensivo</h2>
+      <p>Manejar pensando en lo que pueden hacer los demás, antes de que lo hagan</p>
+    </div>
+  </div>
+
+  <div class="u5-highlight">
+    <h3>🛡️ ¿Qué significa manejar de forma defensiva?</h3>
+    <p>Es conducir de manera que puedas <strong>reaccionar a tiempo</strong> aunque otro conductor cometa un error. No se trata de desconfiar de todos, sino de estar siempre preparado. Un buen instructor enseña a sus alumnos a anticiparse a los peligros, no solo a reaccionar cuando ya es tarde.</p>
+  </div>
+
+  <p class="u5-h3">🔑 Los 5 hábitos del manejo defensivo</p>
+  <div class="u5-paso-grid">
+    <div class="u5-paso">
+      <div class="u5-paso-num">1</div>
+      <div>
+        <h4>Mirar lejos — no solo al carro de adelante</h4>
+        <p>En la ciudad, mira al menos unos 50 metros adelante. En carretera, al menos 200 metros. Mientras más lejos mires, más tiempo tendrás para reaccionar si algo pasa.</p>
+      </div>
+    </div>
+    <div class="u5-paso">
+      <div class="u5-paso-num">2</div>
+      <div>
+        <h4>Mantener distancia con el carro de adelante</h4>
+        <p>Usa la regla de los 3 segundos: cuando el vehículo de adelante pase un poste o señal, cuenta hasta 3. Si tú llegas antes de ese conteo, estás muy cerca. En lluvia, cuenta hasta 6.</p>
+      </div>
+    </div>
+    <div class="u5-paso">
+      <div class="u5-paso-num">3</div>
+      <div>
+        <h4>Hacerte ver — que los demás sepan que estás ahí</h4>
+        <p>Usa las luces, los intermitentes y la bocina cuando sea necesario. Los camiones y buses tienen zonas donde no pueden verte — si estás en esas zonas, muévete. Si no te ven, no pueden evitarte.</p>
+      </div>
+    </div>
+    <div class="u5-paso">
+      <div class="u5-paso-num">4</div>
+      <div>
+        <h4>Siempre tener una "salida"</h4>
+        <p>Antes de cualquier situación, pregúntate: ¿qué haría si el carro de adelante frena de golpe ahora mismo? Mantén espacio a los lados. Conoce dónde hay espacio libre para moverte si algo inesperado ocurre.</p>
+      </div>
+    </div>
+    <div class="u5-paso">
+      <div class="u5-paso-num">5</div>
+      <div>
+        <h4>No asumir — esperar a estar seguro</h4>
+        <p>No des por sentado que el otro conductor va a frenar, va a ceder el paso o va a respetar la señal. Espera ver que realmente lo hace antes de moverte. Un segundo de paciencia puede evitar un accidente.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="u5-h3">📏 ¿Cuánto tarda un carro en frenar? — Distancias reales</p>
+  <div class="u5-table-wrap"><table>
+    <thead><tr><th>Velocidad</th><th>Distancia hasta reaccionar</th><th>Distancia hasta parar</th><th>Total recorrido</th></tr></thead>
+    <tbody>
+      <tr><td>30 km/h (zona escolar)</td><td>8 m</td><td>6 m</td><td><strong>14 m</strong></td></tr>
+      <tr><td>50 km/h (ciudad)</td><td>14 m</td><td>14 m</td><td><strong>28 m</strong></td></tr>
+      <tr><td>80 km/h (perimetral)</td><td>22 m</td><td>37 m</td><td><strong>59 m</strong></td></tr>
+      <tr><td>100 km/h (carretera)</td><td>28 m</td><td>58 m</td><td><strong>86 m</strong></td></tr>
+      <tr><td>120 km/h (autopista)</td><td>33 m</td><td>84 m</td><td><strong>117 m</strong></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="u5-alert yellow">
+    <span class="u5-alert-icon">⚠️</span>
+    <div><strong>Importante para el instructor</strong>
+    Esos números son para un conductor alerta y descansado. Si el conductor está cansado, distraído o tomó algo de alcohol, el tiempo de reacción puede <strong>duplicarse o triplicarse</strong>, lo que significa que el carro recorre el doble antes de empezar a frenar.</div>
+  </div>
+
+  <div class="u5-acc-item">
+    <div class="u5-acc-header" onclick="u5acc(this)"><span>🔄 Adelantamientos — cuándo sí y cuándo no en Ecuador</span><span class="u5-acc-arrow">▼</span></div>
+    <div class="u5-acc-body">
+      <p style="margin-bottom:8px;"><strong>✅ Puedes adelantar cuando:</strong></p>
+      <ul>
+        <li>La línea del centro de la vía es punteada o segmentada (no continua).</li>
+        <li>Puedes ver con claridad al menos 300 metros hacia adelante.</li>
+        <li>No hay vehículos en sentido contrario ni intersecciones cerca.</li>
+        <li>Puedes completar el adelantamiento rápido y volver a tu carril sin que el otro frene.</li>
+      </ul>
+      <p style="margin:10px 0 8px;"><strong>❌ Nunca adelantar cuando:</strong></p>
+      <ul>
+        <li>La línea del centro es continua (amarilla o blanca sin cortes).</li>
+        <li>Estás en una curva, una subida o un puente — no puedes ver lo que viene.</li>
+        <li>Hay una intersección, semáforo o zona escolar cerca.</li>
+        <li>Llueve fuerte, hay neblina o no se ve bien.</li>
+        <li>El vehículo de adelante también está acelerando.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="u5-acc-item">
+    <div class="u5-acc-header" onclick="u5acc(this)"><span>📱 Distracciones — el celular es la mayor amenaza actual</span><span class="u5-acc-arrow">▼</span></div>
+    <div class="u5-acc-body"><ul>
+      <li>Mirar el celular por 5 segundos a 80 km/h equivale a cruzar toda una cancha de fútbol con los ojos cerrados.</li>
+      <li>La multa por usar el celular al manejar en Ecuador es de <strong>$47 USD</strong> (10% del SBU 2025) más reducción de puntos.</li>
+      <li>Activa el modo "No molestar mientras conduzco" antes de salir — todos los teléfonos modernos lo tienen.</li>
+      <li>Si necesitas ver o contestar algo urgente: para el vehículo en un lugar seguro, atiende y luego continúa.</li>
+      <li>Otras distracciones frecuentes: comer al manejar, manipular la radio o GPS, conversaciones muy intensas con pasajeros.</li>
+    </ul></div>
+  </div>
+
+  <div class="u5-footer-nav"><button class="u5-btn-nav" onclick="u5show(0)">← Anterior</button><button class="u5-btn-nav pri" onclick="u5show(2)">Siguiente: Alcohol y Drogas →</button></div>
+</div>
+
+<!-- ══════════ S3: ALCOHOL Y DROGAS ══════════ -->
+<div class="u5-section" id="u5s2">
+  <div class="u5-sec-header">
+    <div class="u5-sec-icon" style="background:#FFEBEB;">🍺</div>
+    <div>
+      <h2>Alcohol y Drogas al Volante</h2>
+      <p>La combinación más peligrosa en las vías del Ecuador</p>
+    </div>
+  </div>
+
+  <div class="u5-alert red">
+    <span class="u5-alert-icon">🚨</span>
+    <div><strong>Para el instructor: tolerancia cero</strong>
+    La ley ecuatoriana no permite ningún nivel de alcohol en sangre para conductores profesionales e instructores. <strong>0,0 g/litro</strong>. No hay excepciones. Además, eres un ejemplo directo para tu alumno — lo que haces dentro del vehículo, él lo aprende.</div>
+  </div>
+
+  <p class="u5-h3">🧠 ¿Qué le hace el alcohol al conductor? — En palabras simples</p>
+  <div class="u5-escala-grid">
+    <div class="u5-escala-card" style="background:#FFF8F0;border-color:#FFD0A0;">
+      <div style="font-size:26px;margin-bottom:6px;">😊</div>
+      <div style="font-size:12px;font-weight:700;color:#C45000;margin-bottom:4px;">1 o 2 cervezas</div>
+      <div style="font-size:12px;color:#7A4000;line-height:1.5;">Te sientes bien, pero tus reflejos ya están más lentos. Crees que manejas igual — ese es el truco del alcohol.</div>
+    </div>
+    <div class="u5-escala-card" style="background:#FFF3E0;border-color:#FFA060;">
+      <div style="font-size:26px;margin-bottom:6px;">😵</div>
+      <div style="font-size:12px;font-weight:700;color:#C45000;margin-bottom:4px;">3 a 5 cervezas</div>
+      <div style="font-size:12px;color:#7A4000;line-height:1.5;">Vista borrosa, tardas el doble en reaccionar, te cuesta calcular distancias. Ya no estás en condiciones de manejar.</div>
+    </div>
+    <div class="u5-escala-card" style="background:#FFE0C0;border-color:#FF8040;">
+      <div style="font-size:26px;margin-bottom:6px;">🤯</div>
+      <div style="font-size:12px;font-weight:700;color:#8B2500;margin-bottom:4px;">6 o más cervezas</div>
+      <div style="font-size:12px;color:#5A1A00;line-height:1.5;">Pierdes coordinación, hablas trabado, tu juicio está muy alterado. Manejar en este estado es un delito grave.</div>
+    </div>
+    <div class="u5-escala-card" style="background:#FFCBA0;border-color:#D40000;">
+      <div style="font-size:26px;margin-bottom:6px;">💀</div>
+      <div style="font-size:12px;font-weight:700;color:#8B0000;margin-bottom:4px;">Borracho completo</div>
+      <div style="font-size:12px;color:#5A0000;line-height:1.5;">No puedes manejar. Riesgo de coma etílico. Si hay un accidente, puede haber cárcel de hasta 5 años.</div>
+    </div>
+  </div>
+
+  <div class="u5-alert orange">
+    <span class="u5-alert-icon">💡</span>
+    <div><strong>El mito más peligroso: "Tomé poco, manejo bien"</strong>
+    El alcohol afecta desde la primera copa. La sensación de "estar bien" es precisamente uno de sus efectos — reduce tu capacidad de darte cuenta de que estás fallando. La persona más peligrosa en la vía a veces es la que cree que está bien.</div>
+  </div>
+
+  <p class="u5-h3">⚖️ Lo que dice la ley ecuatoriana — COIP 2025</p>
+  <div class="u5-table-wrap"><table>
+    <thead><tr><th>Situación</th><th>Conductor Particular</th><th>Conductor Profesional / Instructor</th></tr></thead>
+    <tbody>
+      <tr><td>Límite máximo de alcohol</td><td>0,3 g/litro en sangre</td><td><strong>0,0 g/litro (cero tolerancia)</strong></td></tr>
+      <tr><td>Superar el límite sin accidente</td><td>Multa + retención del vehículo + puntos</td><td>Suspensión inmediata + proceso legal</td></tr>
+      <tr><td>Accidente con heridos bajo efectos</td><td colspan="2">Cárcel de 1 a 3 años (si hay heridos)</td></tr>
+      <tr><td>Accidente con muerte bajo efectos</td><td colspan="2">Cárcel de 3 a 5 años (delito de tránsito)</td></tr>
+      <tr><td>Negarse al alcotest</td><td colspan="2">Se considera positivo automáticamente — mismas sanciones</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="u5-acc-item">
+    <div class="u5-acc-header" onclick="u5acc(this)"><span>💊 Otras cosas que afectan el manejo igual que el alcohol</span><span class="u5-acc-arrow">▼</span></div>
+    <div class="u5-acc-body"><ul>
+      <li><strong>Marihuana:</strong> Cambia cómo percibes el tiempo y las distancias. Te hace sentir que manejas más lento de lo que realmente vas. Sus efectos pueden durar hasta 3 horas después de consumirla.</li>
+      <li><strong>Pastillas para dormir o para los nervios:</strong> Dan mucho sueño y reducen los reflejos. Siempre revisa si el medicamento dice "no manejar maquinaria" — si lo dice, aplica también al vehículo.</li>
+      <li><strong>Pastillas para la alergia (antihistamínicos):</strong> Muchas causan sueño aunque no lo parezca. Pregunta siempre al médico si puedes manejar con ese medicamento.</li>
+      <li><strong>Café y energizantes:</strong> Ayudan un momento, pero no eliminan el cansancio. Al bajar el efecto, el sueño regresa más fuerte. No son solución — solo maquillan el problema.</li>
+    </ul></div>
+  </div>
+
+  <div class="u5-footer-nav"><button class="u5-btn-nav" onclick="u5show(1)">← Anterior</button><button class="u5-btn-nav pri" onclick="u5show(3)">Siguiente: Cansancio →</button></div>
+</div>
+
+<!-- ══════════ S4: CANSANCIO / FATIGA ══════════ -->
+<div class="u5-section" id="u5s3">
+  <div class="u5-sec-header">
+    <div class="u5-sec-icon" style="background:#FFF3E0;">😴</div>
+    <div>
+      <h2>Cansancio al Volante</h2>
+      <p>Tan peligroso como el alcohol, pero mucho más ignorado</p>
+    </div>
+  </div>
+
+  <div class="u5-highlight">
+    <h3>😴 ¿Sabías esto?</h3>
+    <p>Manejar con mucho sueño es igual de peligroso que manejar con alcohol. A 100 km/h, si cierras los ojos por solo <strong>4 segundos</strong>, recorres más de 110 metros completamente a ciegas. Lo peor: el cuerpo puede quedarse dormido por un instante sin que te des cuenta. A eso se le llama <strong>"microsueño"</strong>.</p>
+  </div>
+
+  <p class="u5-h3">🚨 Señales de que estás muy cansado para manejar</p>
+  <div class="u5-grid3">
+    <div class="u5-card" style="border-left:4px solid #C45000;border-radius:0 10px 10px 0;">
+      <div class="u5-card-title">👁️ Lo que sientes en el cuerpo</div>
+      <ul>
+        <li>Los ojos te pesan o te arden</li>
+        <li>Bostezas seguido</li>
+        <li>La cabeza te cae hacia adelante</li>
+        <li>Te cuesta mantener los ojos abiertos</li>
+      </ul>
+    </div>
+    <div class="u5-card" style="border-left:4px solid #C45000;border-radius:0 10px 10px 0;">
+      <div class="u5-card-title">🧠 Lo que pasa en tu mente</div>
+      <ul>
+        <li>No recuerdas los últimos kilómetros que manejaste</li>
+        <li>Te cuesta concentrarte o pensar claro</li>
+        <li>Los pensamientos "se van" solos</li>
+        <li>Reaccionas más lento de lo normal</li>
+      </ul>
+    </div>
+    <div class="u5-card" style="border-left:4px solid #C45000;border-radius:0 10px 10px 0;">
+      <div class="u5-card-title">🚗 Lo que pasa con el manejo</div>
+      <ul>
+        <li>Te sales del carril sin querer</li>
+        <li>Frenas de golpe porque reaccionas tarde</li>
+        <li>Cambias de velocidad sin razón</li>
+        <li>Te pasas semáforos o señales</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="u5-h3">✅ ¿Qué hacer cuando sientes sueño al manejar?</p>
+  <div class="u5-paso-grid">
+    <div class="u5-paso">
+      <div class="u5-paso-num">1</div>
+      <div>
+        <h4>Para en un lugar seguro — de inmediato</h4>
+        <p>No intentes aguantar. El sueño no desaparece solo mientras manejas — al contrario, aumenta. Sal de la vía en cuanto puedas hacerlo con seguridad.</p>
+      </div>
+    </div>
+    <div class="u5-paso">
+      <div class="u5-paso-num">2</div>
+      <div>
+        <h4>Duerme una siesta corta de 20 a 30 minutos</h4>
+        <p>No necesitas dormir horas. Con 20 a 30 minutos de siesta el cuerpo se recupera lo suficiente para seguir el viaje con más alerta. Pon una alarma para no quedarte dormido más tiempo.</p>
+      </div>
+    </div>
+    <div class="u5-paso">
+      <div class="u5-paso-num">3</div>
+      <div>
+        <h4>Sal del carro y muévete un poco</h4>
+        <p>Caminar 5 minutos, estirarte y respirar aire fresco reactivan la circulación y ayudan a despertarse. Úsalo como apoyo — no como reemplazo del descanso.</p>
+      </div>
+    </div>
+    <div class="u5-paso">
+      <div class="u5-paso-num">4</div>
+      <div>
+        <h4>En viajes largos: para cada 2 horas aunque no sientas sueño</h4>
+        <p>La ANT y los estándares internacionales recomiendan hacer una pausa cada 2 horas en carretera. El cansancio puede instalarse sin que lo notes — cuando lo sientes, ya es tarde para prevenirlo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="u5-alert red">
+    <span class="u5-alert-icon">🚫</span>
+    <div><strong>Esto NO funciona contra el sueño</strong>
+    Abrir la ventana, subir el volumen de la música, tomar café o hablar por teléfono. Estas cosas pueden hacer que te sientas un poco más despierto por unos minutos, pero <strong>no eliminan el cansancio</strong>. La única solución real es parar y descansar.</div>
+  </div>
+
+  <div class="u5-acc-item">
+    <div class="u5-acc-header" onclick="u5acc(this)"><span>🌙 ¿Cuándo es más peligroso el cansancio?</span><span class="u5-acc-arrow">▼</span></div>
+    <div class="u5-acc-body"><ul>
+      <li><strong>Entre la 1 am y las 6 am:</strong> El cuerpo está programado para dormir en esas horas. Manejar de madrugada es el momento de mayor riesgo por cansancio.</li>
+      <li><strong>Entre la 1 pm y las 3 pm:</strong> Después del almuerzo el cuerpo tiene una baja natural de energía. Si además dormiste mal la noche anterior, el riesgo se multiplica.</li>
+      <li><strong>En viajes de más de 3 horas seguidas:</strong> Aunque estés descansado al salir, la concentración baja con el tiempo sin que te des cuenta.</li>
+      <li><strong>Instructores con horario partido:</strong> Clases en la mañana y en la noche pueden acumular cansancio. Descansar entre sesiones es fundamental.</li>
+    </ul></div>
+  </div>
+
+  <div class="u5-footer-nav"><button class="u5-btn-nav" onclick="u5show(2)">← Anterior</button><button class="u5-btn-nav pri" onclick="u5show(4)">Siguiente: Peatones y Ciclistas →</button></div>
+</div>
+
+<!-- ══════════ S5: PEATONES Y CICLISTAS ══════════ -->
+<div class="u5-section" id="u5s4">
+  <div class="u5-sec-header">
+    <div class="u5-sec-icon" style="background:#FFF3E0;">🚸</div>
+    <div>
+      <h2>Peatones, Ciclistas y Personas Vulnerables</h2>
+      <p>Los que más se lesionan en un accidente merecen nuestra mayor atención</p>
+    </div>
+  </div>
+
+  <div class="u5-highlight">
+    <h3>🚶 ¿Quiénes son las personas más vulnerables en la vía?</h3>
+    <p>Son quienes circulan sin la protección de la carrocería de un vehículo: peatones, ciclistas, motociclistas, personas con discapacidad y adultos mayores. En un choque con un carro, siempre resultan más afectados. La ley ecuatoriana obliga al conductor a <strong>protegerlos en primer lugar</strong>.</p>
+  </div>
+
+  <p class="u5-h3">🚶 Reglas del conductor hacia los peatones en Ecuador</p>
+  <div class="u5-grid2">
+    <div class="u5-card">
+      <div class="u5-card-title">✅ Lo que debes hacer siempre</div>
+      <ul>
+        <li>Ceder el paso al peatón en <strong>cebras y cruces señalizados</strong>, sin excepción ni importar si hay o no semáforo.</li>
+        <li>Bajar la velocidad al acercarte a mercados, escuelas, hospitales y parques — hay más gente caminando.</li>
+        <li>No pararte sobre la acera, sobre una rampa de acceso ni sobre un paso peatonal.</li>
+        <li>Dar prioridad a personas en silla de ruedas, adultos mayores y mujeres embarazadas.</li>
+        <li>En zonas escolares: la velocidad máxima es <strong>30 km/h</strong> y debes respetar los controles de los agentes de tránsito escolares.</li>
+      </ul>
+    </div>
+    <div class="u5-card">
+      <div class="u5-card-title">⚠️ Situaciones donde más ocurren atropellos</div>
+      <ul>
+        <li>Peatones que salen de entre carros estacionados — no los ves hasta que ya están en la vía.</li>
+        <li>Niños corriendo sin mirar hacia la calle — en zonas residenciales y cerca de escuelas.</li>
+        <li>Adultos mayores que caminan despacio y no alcanzan a cruzar antes de que cambie el semáforo.</li>
+        <li>Personas con audífonos que no escuchan el tráfico a su alrededor.</li>
+        <li>Peatones de noche con ropa oscura en vías sin buena iluminación — en Ecuador hay muchas vías así.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="u5-h3">🚴 Reglas con ciclistas — La distancia de 1,5 metros</p>
+  <div class="u5-card">
+    <div class="u5-card-title">📏 ¿Qué dice la ley ecuatoriana al adelantar a un ciclista?</div>
+    <p>Debes dejar al menos <strong>1,5 metros de distancia lateral</strong> entre tu vehículo y el ciclista al adelantarlo. Si el carril es estrecho y no hay ese espacio, debes esperar a que el carril contrario esté libre antes de adelantar. No respetar esta norma tiene multa y reducción de puntos.</p>
+  </div>
+
+  <div class="u5-grid2">
+    <div class="u5-card">
+      <div class="u5-card-title">🚫 Lo que nunca debes hacer con ciclistas</div>
+      <ul>
+        <li>Tocarles la bocina de manera brusca o sorpresiva — puede asustarlos y hacerlos caer.</li>
+        <li>Pasar rozando al ciclista — aunque creas que hay espacio suficiente.</li>
+        <li>Invadir una ciclovía señalizada con tu vehículo, aunque sea "solo un momento".</li>
+        <li>Abrir la puerta del carro sin mirar si viene un ciclista por el lado — esto es muy frecuente en ciudades.</li>
+      </ul>
+    </div>
+    <div class="u5-card">
+      <div class="u5-card-title">🏍️ Con motociclistas — lo que más falla</div>
+      <ul>
+        <li>Las motos son pequeñas y fáciles de no ver en los espejos. Siempre verifica los puntos ciegos antes de cambiar de carril.</li>
+        <li>Las motos frenan más rápido que un carro — no vayas muy pegado detrás de una.</li>
+        <li>En lluvia, los motociclistas tienen mucho menos estabilidad — dales más espacio.</li>
+        <li>Las motos circulando entre carriles (pasando por las rayas) es ilegal en Ecuador.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="u5-acc-item">
+    <div class="u5-acc-header" onclick="u5acc(this)"><span>🌧️ Manejo en lluvia — muy importante en Ecuador</span><span class="u5-acc-arrow">▼</span></div>
+    <div class="u5-acc-body">
+      <p style="margin-bottom:8px;">En Ecuador llueve mucho, especialmente en la Sierra y en la Costa en invierno. La lluvia cambia todo en la vía:</p>
+      <ul>
+        <li><strong>La vía se pone resbalosa:</strong> Los primeros 10 minutos de lluvia son los más peligrosos — el agua mezcla el polvo y el aceite acumulado en el asfalto y lo vuelve como jabón.</li>
+        <li><strong>El carro tarda más en frenar:</strong> Con vía mojada, la distancia de frenado puede aumentar hasta un 50%. Aumenta la distancia con el carro de adelante.</li>
+        <li><strong>Enciende las luces:</strong> En lluvia es obligatorio usar luces bajas aunque sea de día — mejora la visibilidad de todos.</li>
+        <li><strong>Reduce la velocidad:</strong> No hay una regla exacta, pero siempre debes ir más despacio que el límite máximo cuando llueve fuerte.</li>
+        <li><strong>Aquaplaning:</strong> A más de 80 km/h con vía mojada el carro puede "flotar" sobre el agua y perder el control. Si pasa: no frenes de golpe, suelta el acelerador despacio y mantén el volante recto.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="u5-alert green">
+    <span class="u5-alert-icon">🎯</span>
+    <div><strong>El instructor como ejemplo</strong>
+    Lo que haces dentro del vehículo durante las clases, tu alumno lo aprende y lo repite toda su vida. Si respetas las cebras, cedes el paso a ciclistas y bajas la velocidad cerca de las escuelas, estás formando un conductor que hará lo mismo.</div>
+  </div>
+
+  <div class="u5-footer-nav"><button class="u5-btn-nav" onclick="u5show(3)">← Anterior</button><button class="u5-btn-nav pri" onclick="u5show(5)">Ir a la Evaluación ✓</button></div>
+</div>
+
+<!-- ══════════ S6: EVALUACIÓN ══════════ -->
+<div class="u5-section" id="u5s5">
+  <div class="u5-sec-header">
+    <div class="u5-sec-icon" style="background:#FFF3E0;">📝</div>
+    <div><h2>Evaluación de la Unidad 5</h2><p>10 preguntas — Selecciona la respuesta correcta</p></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q1">
+    <p>1. ¿Cuál es la principal causa de los accidentes de tránsito en Ecuador?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q1',false)"><span class="u5-opt-letter">A</span>Las fallas mecánicas del vehículo</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q1',true)"><span class="u5-opt-letter">B</span>El error del propio conductor</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q1',false)"><span class="u5-opt-letter">C</span>El mal estado de las carreteras</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q1',false)"><span class="u5-opt-letter">D</span>La lluvia y las condiciones del clima</div>
+    <div class="u5-fb" id="u5fb-u5q1"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q2">
+    <p>2. ¿Qué indica la "regla de los 3 segundos" en el manejo defensivo?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q2',false)"><span class="u5-opt-letter">A</span>Debes frenar 3 segundos antes de llegar a un semáforo</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q2',true)"><span class="u5-opt-letter">B</span>Entre tu vehículo y el de adelante deben pasar al menos 3 segundos</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q2',false)"><span class="u5-opt-letter">C</span>Solo puedes mirar los espejos cada 3 segundos</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q2',false)"><span class="u5-opt-letter">D</span>Debes esperar 3 segundos antes de arrancar en un semáforo verde</div>
+    <div class="u5-fb" id="u5fb-u5q2"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q3">
+    <p>3. ¿Cuánto alcohol en sangre se le permite a un instructor de conducción en Ecuador?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q3',false)"><span class="u5-opt-letter">A</span>Hasta 0,3 g/litro, igual que cualquier conductor</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q3',false)"><span class="u5-opt-letter">B</span>Hasta 0,1 g/litro por ser profesional</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q3',true)"><span class="u5-opt-letter">C</span>Ninguno — 0,0 g/litro, tolerancia cero absoluta</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q3',false)"><span class="u5-opt-letter">D</span>Hasta 0,5 g/litro si no ha habido accidente</div>
+    <div class="u5-fb" id="u5fb-u5q3"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q4">
+    <p>4. Un conductor que maneja con mucho sueño es tan peligroso como uno que:</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q4',false)"><span class="u5-opt-letter">A</span>Maneja sin cinturón de seguridad</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q4',false)"><span class="u5-opt-letter">B</span>Tiene los neumáticos desgastados</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q4',true)"><span class="u5-opt-letter">C</span>Ha consumido alcohol</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q4',false)"><span class="u5-opt-letter">D</span>No conoce bien las señales de tránsito</div>
+    <div class="u5-fb" id="u5fb-u5q4"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q5">
+    <p>5. ¿Cuánto tiempo dura como máximo una siesta efectiva para combatir el cansancio al volante?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q5',false)"><span class="u5-opt-letter">A</span>5 a 10 minutos</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q5',true)"><span class="u5-opt-letter">B</span>20 a 30 minutos</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q5',false)"><span class="u5-opt-letter">C</span>1 hora completa</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q5',false)"><span class="u5-opt-letter">D</span>Solo el sueño de noche sirve, las siestas no ayudan</div>
+    <div class="u5-fb" id="u5fb-u5q5"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q6">
+    <p>6. ¿Cuál es la distancia lateral mínima que debes dejar al adelantar a un ciclista según la ley ecuatoriana?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q6',false)"><span class="u5-opt-letter">A</span>0,5 metros</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q6',false)"><span class="u5-opt-letter">B</span>1 metro</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q6',true)"><span class="u5-opt-letter">C</span>1,5 metros</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q6',false)"><span class="u5-opt-letter">D</span>2 metros</div>
+    <div class="u5-fb" id="u5fb-u5q6"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q7">
+    <p>7. ¿Cuándo son más peligrosos los primeros minutos de lluvia en la vía?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q7',false)"><span class="u5-opt-letter">A</span>Porque llueve más fuerte al principio</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q7',true)"><span class="u5-opt-letter">B</span>Porque el agua mezcla el polvo y el aceite del asfalto volviéndolo muy resbaloso</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q7',false)"><span class="u5-opt-letter">C</span>Porque los limpiaparabrisas aún no funcionan bien</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q7',false)"><span class="u5-opt-letter">D</span>Porque hay más peatones en la vía</div>
+    <div class="u5-fb" id="u5fb-u5q7"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q8">
+    <p>8. Cada cuánto tiempo se recomienda hacer una pausa en un viaje largo en carretera?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q8',false)"><span class="u5-opt-letter">A</span>Cada 4 horas o cuando sientas sueño</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q8',false)"><span class="u5-opt-letter">B</span>Solo cuando el conductor lo pida</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q8',true)"><span class="u5-opt-letter">C</span>Cada 2 horas, aunque no sientas cansancio</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q8',false)"><span class="u5-opt-letter">D</span>Cada 6 horas en viajes interprovinciales</div>
+    <div class="u5-fb" id="u5fb-u5q8"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q9">
+    <p>9. ¿Qué debe hacer el conductor si al adelantar a un ciclista no hay suficiente espacio para dejar 1,5 metros?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q9',false)"><span class="u5-opt-letter">A</span>Tocar la bocina para que el ciclista se haga a un lado</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q9',false)"><span class="u5-opt-letter">B</span>Adelantar despacio y pasar lo más cerca posible</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q9',true)"><span class="u5-opt-letter">C</span>Esperar a que el carril contrario esté libre para adelantar con espacio suficiente</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q9',false)"><span class="u5-opt-letter">D</span>Subirse a la acera para tener más espacio</div>
+    <div class="u5-fb" id="u5fb-u5q9"></div>
+  </div>
+
+  <div class="u5-quiz-q" id="u5q10">
+    <p>10. ¿Cuál de estos hábitos forma parte del manejo defensivo?</p>
+    <div class="u5-opt" onclick="u5ans(this,'u5q10',false)"><span class="u5-opt-letter">A</span>Confiar en que los demás siempre van a respetar las señales</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q10',false)"><span class="u5-opt-letter">B</span>Acelerar para salir rápido de una zona de riesgo</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q10',true)"><span class="u5-opt-letter">C</span>Mantener distancia, mirar lejos y siempre tener una salida disponible</div>
+    <div class="u5-opt" onclick="u5ans(this,'u5q10',false)"><span class="u5-opt-letter">D</span>Frenar bruscamente para demostrar que tienes prioridad</div>
+    <div class="u5-fb" id="u5fb-u5q10"></div>
+  </div>
+
+  <button class="u5-quiz-btn" onclick="u5submit()">📊 Ver mis Resultados</button>
+
+  <div class="u5-score" id="u5score">
+    <div class="u5-score-num" id="u5scorenum">—</div>
+    <p id="u5scoremsg"></p>
+    <p style="margin-top:14px;font-size:11px;opacity:.7;">Puntaje mínimo de aprobación: 7/10</p>
+  </div>
+
+  <div class="u5-footer-nav">
+    <button class="u5-btn-nav" onclick="u5show(4)">← Anterior</button>
+    <button class="u5-btn-nav pri" onclick="u5show(0)">🔄 Reiniciar Unidad</button>
+  </div>
+</div>
+
+</div><!-- /u5-wrap -->
+
+<script>
+var u5cur=0,u5map={};
+function u5show(i){
+  var s=document.querySelectorAll('.u5-section');
+  var t=document.querySelectorAll('.u5-tab');
+  for(var j=0;j<s.length;j++){s[j].classList.remove('active');t[j].classList.remove('active');}
+  s[i].classList.add('active');t[i].classList.add('active');
+  u5cur=i;
+  document.getElementById('u5pf').style.width=Math.round(((i+1)/6)*100)+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function u5acc(h){h.parentElement.classList.toggle('open');}
+function u5ans(el,qid,correct){
+  if(u5map[qid]!==undefined)return;
+  u5map[qid]=correct;
+  var opts=el.parentElement.querySelectorAll('.u5-opt');
+  for(var i=0;i<opts.length;i++){opts[i].style.pointerEvents='none';}
+  el.classList.add(correct?'ok':'no');
+  var fb=document.getElementById('u5fb-'+qid);
+  fb.classList.add('show');
+  fb.style.color=correct?'#1A5C3A':'#8C1A1A';
+  fb.textContent=correct?'✅ ¡Correcto!':'❌ Incorrecto. Revisa el contenido de esta sección.';
+}
+function u5submit(){
+  var score=0;
+  var vals=Object.values(u5map);
+  for(var i=0;i<vals.length;i++){if(vals[i])score++;}
+  var el=document.getElementById('u5score');
+  el.style.display='block';
+  document.getElementById('u5scorenum').textContent=score+'/10';
+  var msg='';
+  if(score>=9)msg='🏆 Excelente. Tienes un sólido conocimiento de seguridad vial.';
+  else if(score>=7)msg='✅ Aprobado. Buen manejo de los temas de esta unidad.';
+  else if(score>=5)msg='⚠️ Casi. Repasa los temas donde tuviste dificultad e inténtalo de nuevo.';
+  else msg='❌ No aprobado. Te recomendamos revisar toda la unidad con calma antes de volver a intentarlo.';
+  document.getElementById('u5scoremsg').textContent=msg;
+}
+</script>
